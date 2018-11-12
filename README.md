@@ -15,7 +15,7 @@ Build a browser-based web application to manage a recipe collection. It should b
 |**Add Recipe**                    | :large_orange_diamond:               |
 |**Edit Recipe**                   | :x:               |
 |**Delete Recipe**                 | :x:               |
-|**View Recipe Index**             | :x:               |
+|**View Recipe Index**             | :large_orange_diamond:               |
 |**Deploy to Netlify**             | :x:               |
 |**Submit Deliverables**           | :x:               |
   
