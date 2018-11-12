@@ -37,5 +37,5 @@ Users must be able to view a list of all of their recipes in **reverse chronolog
 
 ## Other Noteworthy Things
 
-### Any CSS Framework Goes
-### No User Login System Required
+* Any CSS Framework Goes
+* No User Login System Required
