@@ -12,6 +12,9 @@ A coding challenge for RokkinCat.
 
 |              Requirement         |  <br>Status       | 
 |:--------------------------------:|:-----------------:|
-|**Add Recipe**                    | :x:               |   
+|**Add Recipe**                    | :x:               |
+|**Edit Recipe**                   | :x:               |
+|**Delete Recipe**                 | :x:               |
+|**View Recipe Index**             | :x:               |
   
 ----
