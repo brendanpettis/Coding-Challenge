@@ -27,7 +27,7 @@ Users must be able to add new recipes to the system. These recipes should have a
 ### Edit Recipe
 Users must be able to update their old recipes with new information. Any of the attributes listed in requirement Add Recipe must be editable. **Editing an old recipe should not move it to the top of the recipe index**.
 
-### Delete Recipe**
+### Delete Recipe
 Users must be able to delete their old recipes. **When a user chooses to delete their recipe, the application should ask them to confirm that they want to delete the recipe**.
 
 ### View Recipe Index
