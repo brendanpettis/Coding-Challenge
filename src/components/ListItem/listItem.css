@@ -1,0 +1,7 @@
+/* CSS for the ListItem */
+
+/********** GENERAL ***********/
+button.list-group-item {
+    text-align: center;
+    outline: none;
+}
