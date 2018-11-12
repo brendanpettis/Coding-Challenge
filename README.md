@@ -1,44 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Coding-Challenge
+Build a browser-based web application to manage a recipe collection. It should be able to show all recipes a user has created, allow a user to edit or delete old recipes, and create new recipes. It should be able to store the recipes between sessions in the application.
 
-## Available Scripts
+----
 
-In the project directory, you can run:
+## Primary Requirements
 
-### `npm start`
+:x: Not Started    
+:large_orange_diamond: In Progress    
+:white_check_mark: Complete    
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+|              Requirement         |  <br>Status       | 
+|:--------------------------------:|:-----------------:|
+|**Add Recipe**                    | :x:               |
+|**Edit Recipe**                   | :x:               |
+|**Delete Recipe**                 | :x:               |
+|**View Recipe Index**             | :x:               |
+|**Deploy to Netlify**             | :x:               |
+|**Submit Deliverables**           | :x:               |
+  
+----
 
-### `npm test`
+## Requirements Description
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Add Recipe
+Users must be able to add new recipes to the system. These recipes should have a **title, description, ingredient list with an amount of each ingredient, and a list of steps to follow to cook the recipe**.
 
-### `npm run build`
+### Edit Recipe
+Users must be able to update their old recipes with new information. Any of the attributes listed in requirement Add Recipe must be editable. **Editing an old recipe should not move it to the top of the recipe index**.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Delete Recipe
+Users must be able to delete their old recipes. **When a user chooses to delete their recipe, the application should ask them to confirm that they want to delete the recipe**.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### View Recipe Index
+Users must be able to view a list of all of their recipes in **reverse chronological order** of the time they added the recipe to the application. **Clicking on a recipe should cause the application display the details of the clicked recipe**.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Other Noteworthy Things
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Any CSS Framework Goes
+* No User Login System Required
