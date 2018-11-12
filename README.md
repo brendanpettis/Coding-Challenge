@@ -16,6 +16,8 @@ Build a browser-based web application to manage a recipe collection. It should b
 |**Edit Recipe**                   | :x:               |
 |**Delete Recipe**                 | :x:               |
 |**View Recipe Index**             | :x:               |
+|**Deploy to Netlify**             | :x:               |
+|**Submit Deliverables**           | :x:               |
   
 ----
 
@@ -32,3 +34,8 @@ Users must be able to delete their old recipes. **When a user chooses to delete 
 
 ### View Recipe Index
 Users must be able to view a list of all of their recipes in **reverse chronological order** of the time they added the recipe to the application. **Clicking on a recipe should cause the application display the details of the clicked recipe**.
+
+## Other Noteworthy Things
+
+### Any CSS Framework Goes
+### No User Login System Required
