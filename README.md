@@ -11,7 +11,7 @@ A coding challenge for RokkinCat.
 ![done][done] Complete
 
 
-|               Requirement        | 1<br>Status       | 
+|              Requirement         |  <br>Status       | 
 |:--------------------------------:|:-----------------:|
 |**Add Recipe**                    | :x:               |   
   
