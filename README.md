@@ -7,6 +7,8 @@ A coding challenge for RokkinCat.
 
 [done]: https://user-images.githubusercontent.com/29199184/32275438-8385f5c0-bf0b-11e7-9406-42265f71e2bd.png "Done"
 
+:x: Not Started
+![done][done] Complete
 
 
 |               Status              | 1<br>Complete     | 2<br>Basics   | 3<br>Average  | 4<br>Decent      | 5<br>Confident | 6<br>Wizard     |
