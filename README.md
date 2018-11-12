@@ -11,8 +11,8 @@ A coding challenge for RokkinCat.
 ![done][done] Complete
 
 
-|               Status              | 1<br>Complete     | 2<br>Basics   | 3<br>Average  | 4<br>Decent      | 5<br>Confident | 6<br>Wizard     |
-|:--------------------------------:|:-----------------:|:-------------:|:-------------:|:----------------:|:--------------:|:---------------:|
-|**Add Recipe**                    | :x:              | ![done][done] | ![done][done] | ![done][done]    | ![done][done]  |     
+|               Requirement        | 1<br>Status       | 
+|:--------------------------------:|:-----------------:|
+|**Add Recipe**                    | :x:               |   
   
 ----
