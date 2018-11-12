@@ -21,14 +21,14 @@ Build a browser-based web application to manage a recipe collection. It should b
 
 ## Requirements Description
 
-**Add Recipe**
+### Add Recipe
 Users must be able to add new recipes to the system. These recipes should have a title, description, ingredient list with an amount of each ingredient, and a list of steps to follow to cook the recipe.
 
-**Edit Recipe**
+### Edit Recipe
 Users must be able to update their old recipes with new information. Any of the attributes listed in requirement **Add Recipe** must be editable. <br>Editing an old recipe should not move it to the top of the recipe index</br>.
 
-**Delete Recipe**
+### Delete Recipe**
 Users must be able to delete their old recipes. <br>When a user chooses to delete their recipe, the application should ask them to confirm that they want to delete the recipe</br>.
 
-**View Recipe Index**
+### View Recipe Index
 Users must be able to view a list of all of their recipes in <br>reverse chronological order</br> of the time they added the recipe to the application. Clicking on a recipe should cause the application display the details of the clicked recipe.
