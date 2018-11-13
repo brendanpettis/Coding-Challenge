@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
-import { ListGroupItem } from 'react-bootstrap';
-import './listItem.css';
+import Panel from 'react-bootstrap/lib/Panel';
+import Button from 'react-bootstrap/lib/Button'
+import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar'
 
 class ListItem extends Component {
     render() {
         return (
-            <ListGroupItem onClick={() => this.props.handleListItemClick(this.props)}>              
-                <h4>{this.props.title}</h4>
-            </ListGroupItem>
+            <Panel onClick={() => this.props.handleListItemClick(this.props)}> 
+                <Panel.Heading>                
+                    <Panel.Title componentClass='h3'>{this.props.title}</Panel.Title>
+                </Panel.Heading>
+                <ButtonToolbar>
+                    <Button bsStyle='primary'>Edit Recipe</Button>
+                    <Button bsStyle='danger' onClick={() => this.props.deleteRecipe(this.props.title)}>Delete Recipe</Button>
+                </ButtonToolbar>
+            </Panel>
         );
     }
 }
