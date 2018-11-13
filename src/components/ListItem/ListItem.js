@@ -5,26 +5,33 @@ import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar'
 import './listItem.css';
 
 class ListItem extends Component {
+    constructor(props, context) {
+        super(props, context);
+    
+    this.state = {
+          open: true
+        }
+    }
+
     render() {
         return (
             <Panel onClick={() => this.props.handleListItemClick(this.props)}> 
                 <Panel.Heading>                
-                    <Panel.Title componentClass='h3'>{this.props.title}</Panel.Title>
+                    <Panel.Title componentClass='h3' toggle>{this.props.title}</Panel.Title>
                 </Panel.Heading>
-                <Panel.Body>
-                    <Panel.Title componentClass='h4'>Ingredients</Panel.Title>
-                    <ol>
-                        {
-                            this.props.ingredients.map((item) => <li key={item}>{item}</li>)
-                        }
-                    </ol>
-                </Panel.Body>
-                <Panel.Footer>
-                    <ButtonToolbar>
-                        <Button bsStyle='primary'>Edit Recipe</Button>
+
+                    <Panel.Body collapsible>
+                        <Panel.Title componentClass='h4'>Ingredients</Panel.Title>
+                        <ol>
+                            {
+                                this.props.ingredients.map((item) => <li key={item}>{item}</li>)
+                            }
+                        </ol>
+                        <ButtonToolbar>
+                        <Button bsStyle='primary' onClick={() => this.props.open("showEdit", this.idx)}>Edit Recipe</Button>
                         <Button bsStyle='danger' onClick={() => this.props.deleteRecipe(this.props.title)}>Delete Recipe</Button>
                     </ButtonToolbar>
-                </Panel.Footer>      
+                    </Panel.Body>            
             </Panel>
         );
     }

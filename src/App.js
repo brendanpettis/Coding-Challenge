@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Accordion from 'react-bootstrap/lib/Accordion'
-import Panel from 'react-bootstrap/lib/Panel'
 import Button from 'react-bootstrap/lib/Button'
-import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar'
 import Modal from 'react-bootstrap/lib/Modal'
 import FormGroup from 'react-bootstrap/lib/FormGroup'
 import ControlLabel from 'react-bootstrap/lib/ControlLabel'
 import FormControl from 'react-bootstrap/lib/FormControl'
 import RecipeList from './components/RecipeList/RecipeList'
-
 
 class App extends Component {
   state={
@@ -23,8 +19,11 @@ class App extends Component {
       }
     ],
     showAdd: false,
+    showEdit: false,
+    currentIndex: 0,
     latestRecipe: {id: '', title: '', description:'', ingredients: [], steps:[]}
   }
+
   componentDidMount() {
     try {
       const json = localStorage.getItem('recipes');
@@ -76,35 +75,93 @@ class App extends Component {
   close = () => {
     if(this.state.showAdd){
       this.setState({showAdd: false});
+    } else if (this.state.showEdit){
+      this.setState({showEdit: false});
     }
   }
 
-  open = (state) => {
+  open = (state, currentIndex) => {
     this.setState({[state]: true});
+    this.setState({[currentIndex]: true});
   }
 
   deleteRecipe = title => {
     let recipes = this.state.recipes.slice();
-    recipes = recipes.filter((recipe) => recipe.title != title);
+    recipes = recipes.filter((recipe) => recipe.title !== title);
     this.setState({recipes});
   }
 
+  updateRecipeTitle(title, currentIndex) {
+    let recipes = this.state.recipes.slice();
+    recipes[currentIndex] = {id: recipes[currentIndex].id, title: title, ingredients: recipes[currentIndex].ingredients}
+    this.setState({recipes});
+  }
+
+  updateRecipeIngredients(ingredients, currentIndex) {
+    let recipes = this.state.recipes.slice();
+    recipes[currentIndex] = {id: recipes[currentIndex].id, title: recipes[currentIndex].title, ingredients: ingredients}
+    this.setState({recipes});
+  }
+
+  // TODO FILL THIS OUT
   handleListItemClick = recipe => {
-      alert(`The list item for ${recipe.title} was just clicked`);
+
   }
 
   render() {
-    const {recipes, latestRecipe} = this.state;
-    console.log(latestRecipe);
+    const {recipes, latestRecipe, currentIndex} = this.state;
+
     return (
         <div className="App container">
-          <RecipeList {...this.state} deleteRecipe={this.deleteRecipe} handleListItemClick={this.handleListItemClick} />
-          
-          <Modal show={this.state.showAdd} onHide={this.close}>
+        {recipes.length > 0 && (
+       
+          <RecipeList {...this.state} open={this.open} deleteRecipe={this.deleteRecipe} handleListItemClick={this.handleListItemClick} />
+          )
+        }
+
+        {recipes.length > 0 && (
+          <Modal show={this.state.showEdit} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Add Recipe</Modal.Title>
+            <Modal.Title>Edit Recipe</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+              <FormGroup controlId='formBasicText'
+              validationState={this.getValidationState()}
+              >
+                <ControlLabel>Recipe Title</ControlLabel>
+                <FormControl 
+                  type='text'
+                  value={recipes[currentIndex].title}
+                  placeholder='Enter Recipe Name'
+                  onChange = {(event) => this.updateRecipeTitle(event.target.value, currentIndex)}
+                >
+                </FormControl>
+                <FormGroup controlId='formControlsTextarea'>
+                <ControlLabel>Recipe Ingredients</ControlLabel>
+                
+                <FormControl 
+                  type='textarea'
+                  placeholder='Enter Recipe Ingredients (Separate with Commas)'
+                  onChange = {(event) => this.updateRecipeIngredients(event.target.value.split(','), currentIndex)}
+                  value={recipes[currentIndex].ingredients}
+                >
+                </FormControl>
+              </FormGroup>
+              </FormGroup>
+          </Modal.Body>
+          <Modal.Footer>
+          <Button onClick={this.close}>Close</Button>
+        </Modal.Footer>
+        </Modal>  
+         
+          )
+        }
+         
+        <Modal show={this.state.showAdd} onHide={this.close}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Recipe</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
             <FormGroup controlId='formBasicText'
             validationState={this.getValidationState()}
             >
@@ -128,12 +185,13 @@ class App extends Component {
               </FormControl>
             </FormGroup>
             </FormGroup>
-          </Modal.Body>
-          <Modal.Footer>
-              <Button bsStyle='success' onClick={(event)=> this.saveNewRecipe(latestRecipe)}>Save</Button>
-          </Modal.Footer>
-          </Modal>
-          <Button bsStyle='success' onClick={(event)=> this.open('showAdd')}>Add Recipe</Button>
+        </Modal.Body>
+        <Modal.Footer>
+            <Button bsStyle='success' onClick={()=> this.saveNewRecipe(latestRecipe)}>Save</Button>
+        </Modal.Footer>
+      </Modal>
+      
+          <Button bsStyle='success' onClick={()=> this.open('showAdd')}>Add Recipe</Button>
         </div>
         ); 
     }
