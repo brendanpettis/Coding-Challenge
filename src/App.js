@@ -16,9 +16,9 @@ class App extends Component {
     recipes:[
       {
         id: 'Mon Nov 12 2018 11:36:27 GMT-0600 (Central Standard Time)',
-        title: 'Fake1',
-        description: 'A fake recipe created for a demo.',
-        ingredients: ['Dragon'],
+        title: 'Sushi',
+        description: 'Everyone loves sushi. Even people who are allergic to it.',
+        ingredients: ['Crab', 'Lobster', 'Seaweed', 'Rice'],
         steps:[]
       }
     ],
