@@ -5,16 +5,9 @@ import FormGroup from 'react-bootstrap/lib/FormGroup';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from 'react-bootstrap/lib/FormControl';
 
-const getValidationState = (props) => {
-    let result;
-    let validTitle = props.state.latestRecipe.title;
-    let validIngredients = props.state.latestRecipe.ingredients;
-    // Note if an empty space is added to the valid ingredients doesnt work properly :/.
-    validTitle.trim() !== "" && validIngredients.length > 0 ? result = 'success': result = 'error';
-     
-    return result;
-  }
 
+
+// This component needs to mirror add recipe except it should update an existing recipe and not change the time stamp
 class EditRecipePage extends Component {
   state={
       recipe: { 
@@ -22,8 +15,7 @@ class EditRecipePage extends Component {
         title: '',
         description: '',
         ingredients: [],
-        ingredientQty: [],
-        ingredientUnitsOfMeasure: [],
+        ingredientQtyAndUnit: [],
         steps:[]
       }
   }
@@ -33,50 +25,83 @@ timeStamp() {
     return today;
 }   
 
-
-addRecipe = (title, ingredients) => {
-this.setState({recipe: {id: this.timeStamp(), title: title, ingredients: ingredients}});
+buildRecipeState = (title, description, ingredients, ingredientQtyAndUnit, steps) => {
+    this.setState({recipe: {id: this.timeStamp().toString(), title: title, description: description, ingredients: ingredients, ingredientQtyAndUnit: ingredientQtyAndUnit, steps: steps}});
 }
-render() {     
-        return (
-            <Consumer> 
-            { props => {
-                return (
-                <div className='container'>
 
-                <FormGroup controlId='formBasicText'
-                validationState={getValidationState(props)}
-                >
-                <ControlLabel>Recipe Title</ControlLabel>
-                <FormControl 
-                    type='text'
-                    value={props.state.latestRecipe.title}
-                    placeholder='Enter Recipe Name'
-                    onChange = {(event) => props.updateLatestRecipe(event.target.value, props.state.latestRecipe.ingredients)}
-                >
-                </FormControl>
-                <FormGroup controlId='formControlsTextarea'>
-                <ControlLabel>Recipe Ingredients</ControlLabel>
-                
-                <FormControl 
-                    type='textarea'
-                    placeholder='Enter Recipe Ingredients (Separate with Commas)'
-                    onChange = {(event) => props.updateLatestRecipe(props.state.latestRecipe.title, event.target.value.split(','))}
-                    value={props.state.latestRecipe.ingredients}
-                >
-                </FormControl>
-                </FormGroup>
-                </FormGroup>
-            
-            <Button bsStyle='success' onClick={()=> props.saveNewRecipe(props.state.latestRecipe)}>Save</Button>
+message(props) {
+    console.log(this.state.recipe);
+    console.log(props.state.recipes);
+    alert('Saved!');
+}
+
+render() {     
+    return (
+        <Consumer> 
+        { props => {
+            return (
+            <div className='container'>
+                <form>
+                    <FormGroup controlId='formRecipeTitleAndDescriptionText'>
+                        <ControlLabel>Recipe Title</ControlLabel>
+                        <FormControl 
+                            type='text'
+                            value={this.state.recipe.title}
+                            placeholder='Enter a clever title'
+                            onChange = {(event) => this.buildRecipeState(event.target.value, this.state.recipe.description)}
+                        >
+                        </FormControl>
+
+                        <ControlLabel>Recipe Description</ControlLabel>
+                        <FormControl 
+                            type='text'
+                            value={this.state.recipe.description}
+                            placeholder='Enter a brief description'
+                            onChange = {(event) => this.buildRecipeState(this.state.recipe.title, event.target.value, this.state.recipe.ingredients)}
+                        >
+                        </FormControl>
+                    </FormGroup>
+                    
+                    <FormGroup controlId='formRecipeIngredientsAndQtyText'>
+                        <ControlLabel>Recipe Ingredients</ControlLabel>
+                            
+                        <FormControl 
+                                type='textarea'
+                                placeholder='Enter Recipe Ingredients (Separate with Commas)'
+                                onChange = {(event) => this.buildRecipeState(this.state.recipe.title, this.state.recipe.description, event.target.value.split(','))}
+                                value={this.state.recipe.ingredients}
+                        >
+                        </FormControl>
+
+                        <ControlLabel>Ingredient Quantity and Units</ControlLabel>
+                        <FormControl 
+                                type='textarea'
+                                placeholder='Enter ingredient quantity with unit of measure ex.) lb, oz, gram, etc. Separate each entry with a comma'
+                                onChange = {(event) => this.buildRecipeState(this.state.recipe.title, this.state.recipe.description, this.state.recipe.ingredients, event.target.value.split(','))}
+                                value={this.state.recipe.ingredientQtyAndUnit}
+                        >
+                        </FormControl>
+                    </FormGroup>
+
+                    <FormGroup controlId='formRecipeStepsText'>
+                        <ControlLabel>Recipe Steps</ControlLabel>
+                        <FormControl 
+                                type='textarea'
+                                placeholder='Enter steps for the Recipe (Separate with Commas)'
+                                onChange = {(event) => this.buildRecipeState(this.state.recipe.title, this.state.recipe.description, this.state.recipe.ingredients, this.state.recipe.ingredientQtyAndUnit, event.target.value.split(','))}
+                                value={this.state.recipe.steps}
+                            >
+                        </FormControl>
+                    </FormGroup>
+                            
+                    <Button bsStyle='success' onClick={() => { this.message(props); props.saveNewRecipe(this.state.recipe)}}>Save</Button>
+                </form>
             </div>
             );
         }}
         </Consumer>
-    );
-
-}
-      
+        );
+    }   
 }
 
 export default EditRecipePage;

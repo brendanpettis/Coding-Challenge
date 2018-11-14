@@ -1,7 +1,5 @@
 /* CSS for the ListItem */
 
-
-h4, ol, li {
-    text-align: left;
-    list-style-type: none;
+.center {
+    text-align: center;
 }

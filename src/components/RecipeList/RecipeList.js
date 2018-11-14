@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListItem from '../ListItem/ListItem';
+import ListGroup from 'react-bootstrap/lib/ListGroup';
 import PanelGroup from 'react-bootstrap/lib/PanelGroup';
 import { Consumer } from '../context';
 
@@ -9,7 +10,7 @@ class RecipeList extends Component {
             <Consumer>         
             { props => {   
                 return (
-                    <PanelGroup accordion id='main-accordian'>             
+                    <ListGroup>          
                     {
                         props.state.recipes.map((recipe, idx) => 
                             <ListItem key={idx} {...recipe} 
@@ -17,7 +18,7 @@ class RecipeList extends Component {
                             />
                         )
                     }               
-                    </PanelGroup>
+                    </ListGroup>   
                 );
             }}      
           </Consumer>
