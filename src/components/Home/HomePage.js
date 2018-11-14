@@ -1,6 +1,7 @@
 import React from 'react';
 import App from '../App/App';
-import '../Home/HomePage.css'
+import '../Home/HomePage.css';
+
 const HomePage = () => (
     <div className='box-layout'>
         <App />

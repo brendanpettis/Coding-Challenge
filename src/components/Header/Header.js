@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
-import { Navbar } from 'react-bootstrap';
-import '../Header/Header.css'
+import { NavLink } from 'react-router-dom';
+import '../Header/Header.css';
+
 const Header = () => (
     <header>
             <h1>Rokkin Recipes</h1>

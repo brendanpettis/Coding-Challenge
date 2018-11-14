@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RecipeCard from '../ListItem/ListItem';
+import RecipeCard from '../RecipeCard/RecipeCard';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 import { Consumer } from '../context';
 
