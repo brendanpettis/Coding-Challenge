@@ -11,12 +11,12 @@ import {Provider} from '../components/context';
 const AppRouter = () => (
     <Provider>
     <BrowserRouter>
-        <div>
+        <div className='rokkin-red'>
             <Header />
             <Switch>
                 <Route path='/' component={HomePage} exact={true}/>
                 <Route path='/create' component={AddRecipePage}/>
-                <Route path='/update/:id' component={EditRecipePage}/>
+                <Route path='/update' component={EditRecipePage}/>
                 <Route component={NotFoundPage}/>
             </Switch>   
         </div>

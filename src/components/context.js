@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 const Context = React.createContext();
 
 export class Provider extends Component {
-constructor(props){
+constructor(props) {
     super(props);
     this.state = {
         recipes:[
@@ -19,6 +19,7 @@ constructor(props){
       }
     this.saveNewRecipe = this.saveNewRecipe.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
+    this.handleListItemClick = this.handleListItemClick.bind(this);
 }
    
 componentDidMount() {
@@ -34,7 +35,7 @@ componentDidMount() {
   }
 } 
 
-componentDidUpdate(){
+componentDidUpdate() {
   localStorage.removeItem('recipes');
   this.updateLocalStorage();
 }
@@ -44,7 +45,7 @@ updateLocalStorage() {
   localStorage.setItem('recipes', json);
 }
 
-saveNewRecipe(newRecipe){
+saveNewRecipe(newRecipe) {
   let recipes = this.state.recipes.slice();
   recipes.push(newRecipe);
   this.setState({recipes});
@@ -56,9 +57,15 @@ deleteRecipe = title => {
   this.setState({recipes});
 }
 
+handleListItemClick = id => {
+  let recipes = this.state.recipes.slice();
+  recipes = recipes.filter((recipe) => recipe.id === id);
+  console.log(`A List Item with the name of ${recipes} was clicked`);
+}
+
 render() {
     return (
-            <Context.Provider value={{state: this.state, saveNewRecipe: this.saveNewRecipe, deleteRecipe: this.deleteRecipe}}>
+            <Context.Provider value={{state: this.state, saveNewRecipe: this.saveNewRecipe, deleteRecipe: this.deleteRecipe, handleListItemClick: this.handleListItemClick}}>
              { this.props.children }
             </Context.Provider>
         )

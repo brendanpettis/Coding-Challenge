@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import ListItem from '../ListItem/ListItem';
+import RecipeCard from '../ListItem/ListItem';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
-import PanelGroup from 'react-bootstrap/lib/PanelGroup';
 import { Consumer } from '../context';
 
 class RecipeList extends Component {
@@ -13,16 +12,16 @@ class RecipeList extends Component {
                     <ListGroup>          
                     {
                         props.state.recipes.map((recipe, idx) => 
-                            <ListItem key={idx} {...recipe} 
+                            <RecipeCard key={idx} {...recipe} 
                                 deleteRecipe={props.deleteRecipe} 
+                                handleListItemClick={props.handleListItemClick}
                             />
                         )
                     }               
                     </ListGroup>   
                 );
             }}      
-          </Consumer>
-            
+          </Consumer>           
         );
     }
 }
