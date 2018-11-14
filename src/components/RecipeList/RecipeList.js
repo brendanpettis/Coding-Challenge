@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RecipeCard from '../RecipeCard/RecipeCard';
-import ListGroup from 'react-bootstrap/lib/ListGroup';
 import { Consumer } from '../context';
+import '../RecipeList/RecipeList.css';
 
 class RecipeList extends Component {
     render() {
@@ -9,16 +9,16 @@ class RecipeList extends Component {
             <Consumer>         
             { props => {   
                 return (
-                    <ListGroup>          
+                    <div className='overflow'>          
                     {
-                        props.state.recipes.map((recipe, idx) => 
+                        [...props.state.recipes].reverse().map((recipe, idx) => 
                             <RecipeCard key={idx} {...recipe} 
                                 deleteRecipe={props.deleteRecipe} 
                                 handleListItemClick={props.handleListItemClick}
                             />
                         )
                     }               
-                    </ListGroup>   
+                    </div>   
                 );
             }}      
           </Consumer>           

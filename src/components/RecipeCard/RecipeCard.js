@@ -13,6 +13,16 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './RecipeCard.css';
 
+// Simple Helper function to Combine Ingredients and Details to be Displayed
+const combineIngredientsAndQty = (ingredients, ingredientDetails) => {
+    let combo = [];
+    
+    for(let i = 0; i < ingredients.length; i++){
+      combo[i] = ingredients[i] + ingredientDetails[i];
+    }
+    return combo;
+};
+
 const styles = theme => ({
   card: {
       background: 'fade-out(white, .15)',
@@ -20,7 +30,7 @@ const styles = theme => ({
       padding: '$l-size $m-size',
       margin: '1%',
       textAlign: 'center',
-      width: '25rem'
+      width: '50rem'
   },
   actions: {
     display: 'flex',
@@ -36,6 +46,10 @@ const styles = theme => ({
   }
 });
 
+
+/* Most of this was jacked from Material UI. It creates a gutted card element for each recipe
+I pass additional props into it from context to display details of each recipe. */
+
 class RecipeCard extends React.Component {
   state = { expanded: false };
 
@@ -49,8 +63,8 @@ class RecipeCard extends React.Component {
     return (
       <Card className={classes.card}>
         <CardHeader
-          title={this.props.title}
-          subheader={this.props.id}
+          title={`Title: ${this.props.title}`}
+          subheader={`Added: ${this.props.id}`}
         />
         <CardContent>
           <Typography component="p">
@@ -68,37 +82,32 @@ class RecipeCard extends React.Component {
         <ExpandMoreIcon />
       </IconButton>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Steps:</Typography>
+        <CardContent>  
+        <Typography paragraph>Ingredients:</Typography>
+        <ul>
+
+        {combineIngredientsAndQty(this.props.ingredients, this.props.ingredientQtyAndUnit)
+          .map((comboItem) => (
           <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
-          <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-            heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-            browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving
-            chicken and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion,
-            salt and pepper, and cook, stirring often until thickened and fragrant, about 10
-            minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-          </Typography>
-          <Typography paragraph>
-            Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-            without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat
-            to medium-low, add reserved shrimp and mussels, tucking them down into the rice, and
-            cook again without stirring, until mussels have opened and rice is just tender, 5 to 7
-            minutes more. (Discard any mussels that don’t open.)
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
+            <li key={comboItem}>{`${comboItem}`}</li>
+          </Typography> ))}
+        
+        </ul>
+
+          <Typography paragraph>Steps To Make:</Typography>
+          <ol>
+          {this.props.steps.map((step) => 
+            <Typography paragraph>
+              <li key={step}>{`${step}`}</li>
+            </Typography> )}
+          </ol>
+
           <ButtonToolbar>
-          <Button bsStyle='danger' onClick={() => this.props.deleteRecipe(this.props.title)}>Delete Recipe</Button>
-    </ButtonToolbar>
+          <Button bsStyle='danger' onClick={(e) => {if (window.confirm('Are you sure you want to delete this recipe?')) this.props.deleteRecipe(this.props.title)}}>Delete Recipe</Button>
+          </ButtonToolbar>
         </CardContent>
       </Collapse>
-
-      </Card>
+        </Card>
     );
   }
 }

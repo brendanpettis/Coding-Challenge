@@ -18,39 +18,18 @@ class AddRecipePage extends Component {
             }
     }
 
-
 timeStamp() {
     let today = new Date();
     return today;
 }   
 
-message(props) {
+message() {
     alert('Added!');
+    console.log(this.state);
 }
 
-onTitleChange = (e) => {
-    const title = e.target.value;
-    this.setState({ recipe: { id: this.timeStamp().toString(), title: title }});
-}
-
-onDescriptionChange = (e) => {
-    const description = e.target.value;
-    this.setState({description});
-}
-
-onIngredientChange = (e) => {
-    const ingredients = e.target.value.split(',');
-    this.setState({ingredients});
-}
-
-onIngredientQtyAndUnitChange = (e) => {
-    const ingredientQtyAndUnit = e.target.value.split(',');
-    this.setState({ingredientQtyAndUnit});
-}
-
-onStepChange = (e) => {
-    const steps = e.target.value.split(',');
-    this.setState({steps});
+buildRecipeState = (title, description, ingredients, ingredientQtyAndUnit, steps) => {
+    this.setState({recipe: {id: this.timeStamp().toString(), title: title, description: description, ingredients: ingredients, ingredientQtyAndUnit: ingredientQtyAndUnit, steps: steps}});
 }
 
 render() {     
@@ -66,7 +45,7 @@ render() {
                         placeholder="Enter a clever title"
                         autoFocus
                         value={this.state.recipe.title}
-                        onChange={this.onTitleChange}
+                        onChange={(event) => this.buildRecipeState(event.target.value, this.state.recipe.description)}
                     >
                     </FormControl>
 
@@ -75,7 +54,7 @@ render() {
                         type='text'
                         placeholder='Enter a brief description'
                         value={this.state.recipe.description}
-                        onChange={this.onDescriptionChange}
+                        onChange={(event) => this.buildRecipeState(this.state.recipe.title, event.target.value, this.state.recipe.ingredients)}
                     >
                     </FormControl>
 
@@ -84,7 +63,7 @@ render() {
                         type='text'
                         placeholder='Enter Recipe Ingredients (Separate with Commas)'
                         value={this.state.recipe.ingredients}
-                        onChange={this.onIngredientChange}
+                        onChange={(event) => this.buildRecipeState(this.state.recipe.title, this.state.recipe.description, event.target.value.split(','))}
                     >
                     </FormControl>
 
@@ -93,7 +72,7 @@ render() {
                         type='text'
                         placeholder='Enter ingredient quantity with unit of measure ex.) lb, oz, gram, etc. Separate each entry with a comma'
                         value={this.state.recipe.ingredientQtyAndUnit}
-                        onChange={this.onIngredientQtyAndUnitChange}
+                        onChange={(event) => this.buildRecipeState(this.state.recipe.title, this.state.recipe.description, this.state.recipe.ingredients, event.target.value.split(','))}
                     >
                     </FormControl>
 
@@ -102,12 +81,12 @@ render() {
                         type='text'
                         placeholder='Enter steps for the Recipe (Separate with Commas)'
                         value={this.state.recipe.steps}
-                        onChange={this.onStepChange}
+                        onChange={(event) => this.buildRecipeState(this.state.recipe.title, this.state.recipe.description, this.state.recipe.ingredients, this.state.recipe.ingredientQtyAndUnit, event.target.value.split(','))}
                     >
                     </FormControl>
             </FormGroup>     
             
-            <Button bsStyle='success' onClick={() => { this.message(props); props.saveNewRecipe(this.state.recipe); }}>Add</Button>        
+            <Button bsStyle='success' onClick={() => { this.message(); props.saveNewRecipe(this.state.recipe); }}>Add</Button>        
             </div>
             );
         }}

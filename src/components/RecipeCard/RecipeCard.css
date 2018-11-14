@@ -3,3 +3,8 @@
 .center {
     text-align: center;
 }
+
+li {
+    width: 37.5rem;
+    list-style: none;
+}

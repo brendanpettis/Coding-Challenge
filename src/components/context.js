@@ -9,7 +9,7 @@ constructor(props) {
         recipes:[
             {
               id: 'Mon Nov 12 2018 11:36:27 GMT-0600 (Central Standard Time)',
-              title: 'Not Sushi',
+              title: 'Sushi',
               description: 'Everyone loves sushi. Even people who are allergic to it.',
               ingredients: ['Crab', 'Lobster', 'Seaweed', 'Rice'],
               ingredientQtyAndUnit: ['0.5 lb', '1 lb', '3 rolls', '2 cups'],
