@@ -15,20 +15,33 @@ class ListItem extends Component {
 
     render() {
         return (
-            <Panel onClick={() => this.props.handleListItemClick(this.props)}> 
+            <Panel> 
                 <Panel.Heading>                
-                    <Panel.Title componentClass='h3' toggle>{this.props.title}</Panel.Title>
+                    <Panel.Title componentClass='h3' toggle>Title: {this.props.title}</Panel.Title>
                 </Panel.Heading>
 
                     <Panel.Body collapsible>
-                        <Panel.Title componentClass='h4'>Ingredients</Panel.Title>
+
+                        <Panel.Title componentClass='h4'>Description: {this.props.description}</Panel.Title>
+                        <Panel.Title componentClass='h4'>Ingredients: </Panel.Title>
                         <ol>
                             {
                                 this.props.ingredients.map((item) => <li key={item}>{item}</li>)
                             }
                         </ol>
+                        <Panel.Title componentClass='h4'>Ingredients And Units: </Panel.Title>
+                        <ol>
+                        {
+                            this.props.ingredientQtyAndUnit.map((unit) => <li key={unit}>{unit}</li>)
+                        }
+                        </ol>
+                        <Panel.Title componentClass='h4'>Recipe Steps: </Panel.Title>
+                        <ol>
+                        {
+                            this.props.steps.map((step) => <li key={step}>{step}</li>)                     
+                        }
+                        </ol>
                         <ButtonToolbar>
-                        <Button bsStyle='primary' onClick={() => this.props.open("showEdit", this.idx)}>Edit Recipe</Button>
                         <Button bsStyle='danger' onClick={() => this.props.deleteRecipe(this.props.title)}>Delete Recipe</Button>
                     </ButtonToolbar>
                     </Panel.Body>            

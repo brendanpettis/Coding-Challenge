@@ -1,11 +1,7 @@
 /* CSS for the ListItem */
 
-/********** GENERAL ***********/
-button.list-group-item {
-    text-align: center;
-    outline: none;
-}
 
-li {
+h4, ol, li {
     text-align: left;
+    list-style-type: none;
 }

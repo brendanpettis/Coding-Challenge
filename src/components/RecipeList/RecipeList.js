@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import ListItem from '../ListItem/ListItem';
 import PanelGroup from 'react-bootstrap/lib/PanelGroup';
+import { Consumer } from '../context';
 
 class RecipeList extends Component {
     render() {
         return (
-            <PanelGroup accordion id='main-accordian'>             
+            <Consumer>         
+            { props => {   
+                return (
+                    <PanelGroup accordion id='main-accordian'>             
                     {
-                        this.props.recipes.map((recipe, idx) => 
+                        props.state.recipes.map((recipe, idx) => 
                             <ListItem key={idx} {...recipe} 
-                                open={this.props.open}
-                                deleteRecipe={this.props.deleteRecipe} 
-                                handleListItemClick={this.props.handleListItemClick}
+                                deleteRecipe={props.deleteRecipe} 
                             />
                         )
                     }               
-            </PanelGroup>
+                    </PanelGroup>
+                );
+            }}      
+          </Consumer>
+            
         );
     }
 }

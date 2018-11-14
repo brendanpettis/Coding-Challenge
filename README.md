@@ -12,7 +12,7 @@ Build a browser-based web application to manage a recipe collection. It should b
 
 |              Requirement         |  <br>Status       | 
 |:--------------------------------:|:-----------------:|
-|**Add Recipe**                    | :large_orange_diamond:               |
+|**Add Recipe**                    | :white_check_mark:                   |
 |**Edit Recipe**                   | :large_orange_diamond:               |
 |**Delete Recipe**                 | :white_check_mark:                   |
 |**View Recipe Index**             | :large_orange_diamond:               |
