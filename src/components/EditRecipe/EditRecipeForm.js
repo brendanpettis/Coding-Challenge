@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Consumer } from '../context';
 import Button from 'react-bootstrap/lib/Button';
 import '../AddRecipe/AddRecipe.css';
 
@@ -19,12 +18,8 @@ const formValid = ({ formErrors, ...rest }) => {
     return valid;
   };
 
-
-  const findRecipe = (context, params) => {
-   
-    console.log(context);
-    console.log(params);
-  
+// Helper function to pull out the right recipe to edit.
+const findRecipe = (context, params) => {
     return context.find((recipe) => recipe.id === params);   
 }
 
@@ -56,14 +51,15 @@ message() {
 
 finalValidation() {
 
-  // If everything from the form was valid, it's safe to complete the recipe and pass it
+  // If everything from the form was valid, it's safe to complete the recipe and pass it on
   if (formValid(this.state)) {
     
     let tempRecipe = findRecipe(this.props.context.state.recipes, this.props.params);
 
-    console.log(this.props.context);
       // reset the state
       this.setState({id:'', title: null, ingredients: null, ingredientQtyAndUnit: null, steps: null});
+      
+      // Fill out a recipe object
       let recipe = {
           id: tempRecipe.id,
           title: this.state.title,
@@ -73,8 +69,10 @@ finalValidation() {
           steps: [...this.state.steps.split(',')]
       }
       
-      // show it worked
+      // Alert that it worked
       this.message();
+
+      // return the recipe object
       return recipe;
     } else {
         // otherwise if the form wasn't valid show a cryptic error message to the console
@@ -138,6 +136,7 @@ handleChange = e => {
         }
     }
 
+    // For debuggin purposes
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
 }
 
@@ -146,10 +145,7 @@ render() {
     const { formErrors } = this.state;
 
     return (
-        <Consumer> 
-        { props => {
-            return (
-                <div>
+              <div>
                 <div className='wrapper'>
                 <div className='form-wrapper'>
                   <h3>Edit Recipe</h3>
@@ -233,7 +229,7 @@ render() {
                           // Perform a final validation and return a recipe or do nothing
                           let valid = this.finalValidation();
                           if(valid){
-                            console.log(this.props.context);
+                            // Use Edit Recipe 
                               this.props.context.editRecipe(valid);
                           }
                         }}>Update</Button> 
@@ -242,9 +238,6 @@ render() {
                 </div>
               </div>
             </div>
-            );
-        }}
-        </Consumer>
         );
     }   
 }
