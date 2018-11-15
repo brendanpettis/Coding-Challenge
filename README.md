@@ -17,8 +17,8 @@ Build a browser-based web application to manage a recipe collection. It should b
 |**Delete Recipe**                 | :white_check_mark:                   |
 |**View Recipe Index**             | :white_check_mark:                   |
 |**Utilize Local Storage**         | :white_check_mark:                   |
-|**Deploy to Netlify**             | :large_orange_diamond:               |
-|**Submit Deliverables**           | :x:               |
+|**Deploy to Netlify**             | :white_check_mark:                   |
+|**Submit Deliverables**           | :large_orange_diamond:               |
   
 ----
 
