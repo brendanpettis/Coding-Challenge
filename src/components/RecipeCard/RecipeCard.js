@@ -55,33 +55,44 @@ constructor(props){
 
     return (
       <Card className={classes.card}>
+        
         <CardContent>
-        <Typography component='h5' variant='h5'>
-          {`${this.props.title}`}
-        </Typography>
-        <Typography variant="subtitle1" color="textSecondary">
-          {`Added: ${this.props.id}`}
+          <Typography component='h5' variant='h5'>
+            {`${this.props.title}`}
           </Typography>
+
+          <Typography variant="subtitle1" color="textSecondary">
+            {`Added: ${this.props.id}`}
+            </Typography>
         </CardContent>
+
         <CardContent>
           <Typography component="p">
             {this.props.description}
           </Typography>
         </CardContent>
+
         <IconButton
-        className={classnames(classes.expand, {
-          [classes.expandOpen]: this.state.expanded,
-        })}
-        onClick={this.handleExpandClick}
-        aria-expanded={this.state.expanded}
-        aria-label="Show more"
-      >
+          className={classnames(classes.expand, {
+            [classes.expandOpen]: this.state.expanded,
+          })}
+          onClick={this.handleExpandClick}
+          aria-expanded={this.state.expanded}
+          aria-label="Show more"
+        >
         <ExpandMoreIcon />
         </IconButton>
+
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
         <CardContent>  
-        <Typography paragraph>Ingredients:</Typography>
-
+          
+          <Typography paragraph>Ingredients:</Typography>
+          <ul>
+          {this.props.ingredients.map((ingredient) => 
+            <Typography paragraph>
+              <li key={ingredient}>{`${ingredient}`}</li>
+            </Typography> )}
+          </ul> 
 
           <Typography paragraph>Steps To Make:</Typography>
           <ol>
@@ -92,12 +103,16 @@ constructor(props){
           </ol>
 
           <ButtonToolbar>
-          <Button bsStyle='danger' onClick={(e) => {if (window.confirm('Are you sure you want to delete this recipe?')) this.props.deleteRecipe(this.props.title)}}>Delete Recipe</Button>
-          <Button><Link to={`update/${this.props.id}`}>Edit Recipe</Link></Button>
+              <Button bsStyle='danger' onClick={(e) => 
+                {if (window.confirm('Are you sure you want to delete this recipe?')) 
+                this.props.deleteRecipe(this.props.title)}}>Delete Recipe</Button>
+              <Button><Link to={`update/${this.props.id}`}>Edit Recipe</Link></Button>
           </ButtonToolbar>
+
         </CardContent>
-      </Collapse>
-        </Card>
+        </Collapse>
+
+      </Card>
     );
   }
 }

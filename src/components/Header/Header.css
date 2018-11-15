@@ -32,3 +32,14 @@ a:visited {
 a:active {
     text-decoration: none !important;
 }
+
+.logo {
+    background-color: #fff;
+    width: 7%;
+    height: 7%;
+    float: left;
+    margin-left: 0.1%;
+    margin-right: 3%;
+    margin-top: 0.15%;
+    margin-bottom: 0.1%;
+}
