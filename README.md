@@ -13,11 +13,11 @@ Build a browser-based web application to manage a recipe collection. It should b
 |              Requirement         |  <br>Status       | 
 |:--------------------------------:|:-----------------:|
 |**Add Recipe**                    | :white_check_mark:                   |
-|**Edit Recipe**                   | :large_orange_diamond:               |
+|**Edit Recipe**                   | :white_check_mark:                   |
 |**Delete Recipe**                 | :white_check_mark:                   |
-|**View Recipe Index**             | :large_orange_diamond:               |
+|**View Recipe Index**             | :white_check_mark:                   |
 |**Utilize Local Storage**         | :white_check_mark:                   |
-|**Deploy to Netlify**             | :x:               |
+|**Deploy to Netlify**             | :large_orange_diamond:               |
 |**Submit Deliverables**           | :x:               |
   
 ----
