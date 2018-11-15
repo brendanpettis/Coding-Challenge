@@ -17,7 +17,9 @@ constructor(props) {
             }
           ]
       }
+      
     this.saveNewRecipe = this.saveNewRecipe.bind(this);
+    this.editRecipe = this.editRecipe.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
     this.handleListItemClick = this.handleListItemClick.bind(this);
 }
@@ -45,12 +47,17 @@ updateLocalStorage() {
   localStorage.setItem('recipes', json);
 }
 
-saveNewRecipe(newRecipe) {
-  let recipes = this.state.recipes.slice();
-  recipes.push(newRecipe);
-  this.setState({recipes});
+saveNewRecipe(addRecipe) {
+    let recipes = this.state.recipes.slice();
+    recipes.push(addRecipe);
+    this.setState({recipes});
 }
-  
+
+editRecipe(editRecipe){
+ let recipes = this.state.recipes.map(el => (el.id === editRecipe.id ? Object.assign({}, el, editRecipe ) : el));
+ this.setState({recipes});
+}
+
 deleteRecipe = title => {
   let recipes = this.state.recipes.slice();
   recipes = recipes.filter((recipe) => recipe.title !== title);
@@ -65,7 +72,7 @@ handleListItemClick = id => {
 
 render() {
     return (
-            <Context.Provider value={{state: this.state, saveNewRecipe: this.saveNewRecipe, deleteRecipe: this.deleteRecipe, handleListItemClick: this.handleListItemClick}}>
+            <Context.Provider value={{state: this.state, saveNewRecipe: this.saveNewRecipe, editRecipe: this.editRecipe, deleteRecipe: this.deleteRecipe, handleListItemClick: this.handleListItemClick}}>
              { this.props.children }
             </Context.Provider>
         )

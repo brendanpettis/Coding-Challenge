@@ -6,7 +6,7 @@ import AddRecipePage from '../components/AddRecipe/AddRecipePage';
 import EditRecipePage from '../components/EditRecipe/EditRecipePage';
 import NotFoundPage from '../components/NotFound/NotFoundPage';
 import './index.css';
-import {Provider} from '../components/context';
+import { Provider } from '../components/context';
 
 const AppRouter = () => (
     <Provider>
@@ -16,7 +16,7 @@ const AppRouter = () => (
             <Switch>
                 <Route path='/' component={HomePage} exact={true}/>
                 <Route path='/create' component={AddRecipePage}/>
-                <Route path='/update' component={EditRecipePage}/>
+                <Route path='/update/:id' component={EditRecipePage}/>
                 <Route component={NotFoundPage}/>
             </Switch>   
         </div>

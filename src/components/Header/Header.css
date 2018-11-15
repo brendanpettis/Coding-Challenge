@@ -17,13 +17,18 @@ a {
     float: right;
     padding-right: 2%;
     padding-bottom: 1%;
+    text-decoration: none !important;
 }
 
 a:hover {
     color: white;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 a:visited {
-    text-decoration: none;
+    text-decoration: none !important;
+}
+
+a:active {
+    text-decoration: none !important;
 }
