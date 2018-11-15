@@ -20,7 +20,7 @@ const styles = theme => ({
       padding: '$l-size $m-size',
       margin: '1%',
       textAlign: 'center',
-      width: '50rem'
+      width: '40rem'
   },
   actions: {
     display: 'flex',
@@ -57,7 +57,7 @@ constructor(props){
       <Card className={classes.card}>
         
         <CardContent>
-          <Typography component='h5' variant='h5'>
+          <Typography component='h3' variant='h3'>
             {`${this.props.title}`}
           </Typography>
 
@@ -67,7 +67,7 @@ constructor(props){
         </CardContent>
 
         <CardContent>
-          <Typography component="p">
+          <Typography component='h4' variant='h4'>
             {this.props.description}
           </Typography>
         </CardContent>
@@ -86,19 +86,27 @@ constructor(props){
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
         <CardContent>  
           
-          <Typography paragraph>Ingredients:</Typography>
+          <Typography component='h5' variant='h5'>Ingredients:</Typography>
           <ul>
-          {this.props.ingredients.map((ingredient) => 
-            <Typography paragraph>
-              <li key={ingredient}>{`${ingredient}`}</li>
+          {this.props.ingredients.map((ingredient, idx) => 
+            <Typography component='h6' variant='h6' color="textSecondary">
+              <li key={idx}>{`${ingredient}`}</li>
             </Typography> )}
           </ul> 
 
-          <Typography paragraph>Steps To Make:</Typography>
+          <Typography component='h5' variant='h5'>Ingredients Quantity & Units</Typography>
+          <ul>
+          {this.props.ingredientQtyAndUnit.map((qty, idx) => 
+            <Typography component='h6' variant='h6' color="textSecondary">
+              <li key={idx}>{`${qty}`}</li>
+            </Typography> )}
+          </ul> 
+
+          <Typography component='h5' variant='h5'>Steps To Make:</Typography>
           <ol>
-          {this.props.steps.map((step) => 
-            <Typography paragraph>
-              <li key={step}>{`${step}`}</li>
+          {this.props.steps.map((step, idx) => 
+            <Typography component='h6' variant='h6' color="textSecondary">
+              <li key={idx}>{`${step}`}</li>
             </Typography> )}
           </ol>
 

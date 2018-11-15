@@ -1,18 +1,19 @@
 import React from 'react';
 import { Consumer } from '../context';
 import EditRecipeForm from '../EditRecipe/EditRecipeForm';
+import '../EditRecipe/EditRecipePage.css';
+
 
 const EditRecipePage = (props) => {
 
     return (
-        <div>
-        {props.match.params.id}
+        <div className='wrapper'>
         <Consumer> 
         { context => 
+            
             <EditRecipeForm params={props.match.params.id} context={context} />
         }
-        </Consumer>
-        
+        </Consumer>  
         </div>
     );
 

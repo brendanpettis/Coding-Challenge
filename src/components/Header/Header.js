@@ -4,7 +4,7 @@ import '../Header/Header.css';
 
 const Header = () => (
     <header>
-            <img className='logo' src='favicon.ico' />
+            <img alt='rokkin cat logo' className='logo' src='favicon.ico' />
             <h1>Rokkin Recipes</h1>
             <NavLink to='/create' activeClassName='is-active'>Add Recipe</NavLink>    
             <NavLink to='/' activeClassName='is-active' exact={true}>Home</NavLink>   

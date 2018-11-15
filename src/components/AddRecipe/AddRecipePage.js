@@ -40,7 +40,6 @@ constructor(props){
     }
 }
  
-
 timeStamp() {
     let today = new Date();
     return today;
