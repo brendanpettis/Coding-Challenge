@@ -5,7 +5,7 @@
 * [Primary Requirements](#primary-requirements)
 * [Run the Application](#run-the-application)
 * [Dependencies](#dependencies)
-* [What I Learned](#outcome)
+* [Takeaway](#takeaway)
 
 ## Description
 Build a browser-based web application to manage a recipe collection. It should be able to show all recipes a user has created, allow a user to edit or delete old recipes, and create new recipes. It should be able to store the recipes between sessions in the application.
@@ -14,6 +14,8 @@ Build a browser-based web application to manage a recipe collection. It should b
 
 ## Primary Requirements
 
+
+### Status
 :x: Not Started    
 :large_orange_diamond: In Progress    
 :white_check_mark: Complete    
@@ -27,7 +29,7 @@ Build a browser-based web application to manage a recipe collection. It should b
 |**View Recipe Index**             | :white_check_mark:                   |
 |**Utilize Local Storage**         | :white_check_mark:                   |
 |**Deploy to Netlify**             | :white_check_mark:                   |
-|**Submit Deliverables**           | :large_orange_diamond:               |
+|**Submit Deliverables**           | :white_check_mark:                   |
   
 ----
 
@@ -78,9 +80,10 @@ To use the application you can run it locally, or visit [Rokkin Recipes](https:/
 
 * [Node](https://nodejs.org/en/)
 * [React](https://reactjs.org/)
+* [React Router DOM](https://www.npmjs.com/package/react-router-dom)
 * [Material-UI](https://material-ui.com/)
 * [ReactBootstrap](https://react-bootstrap.github.io/)
 
-## Outcome
+## Takeaway
 
-Overall, I believe I was able to successfully meet the basic requirements for this take home coding challenge. It was a lot of fun, and I gained valuable experience playing with React Router, and the new Context API. A major thing I would change in a future build would be to create a single form component that could be reused for both the Add and Edit Pages since they are practically identical. I would also modularize the helper functions and overall form validation, as well as rework the applications composition to make better use of the Context API and further limit duplicate code. Not to mention plain CSS files are on their way out and I should've probably utilized Styled Components. That said, I originally speed built this application with one page, no validation, using modals, and I'm glad I chose to scrap it and learn something new instead. :raised_hands: :blush:
+Overall, I believe I was able to successfully meet the basic requirements for this take home coding challenge. It was a lot of fun, and I gained valuable experience playing with React Router, and the new Context API. A major thing I would change in a future build would be to create a single form component that could be reused for both the Add and Edit Pages since they are practically identical. I would also modularize the helper functions and overall form validation, as well as rework the applications composition to make better use of the Context API and further limit duplicate code. Not to mention plain CSS files are on their way out and I should've probably utilized Styled Components. That said, I originally speed built this application with one page, no validation, using modals, and I'm glad I chose to scrap it and learn something new instead. :raised_hands:
