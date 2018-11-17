@@ -8,12 +8,11 @@ const EditRecipePage = (props) => {
 
     return (
         <div className='wrapper'>
-        <Consumer> 
-        { context => 
-            
-            <EditRecipeForm params={props.match.params.id} context={context} />
-        }
-        </Consumer>  
+            <Consumer> 
+            { context =>               
+                <EditRecipeForm params={props.match.params.id} context={context} />
+            }
+            </Consumer>  
         </div>
     );
 

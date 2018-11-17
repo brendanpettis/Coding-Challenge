@@ -1,4 +1,12 @@
 # Coding-Challenge
+
+# Table of Contents
+* [Description](#description)
+* [Primary Requirements](#primary-requirements)
+* [Run the Application](#run-the-application)
+* [Dependencies](#dependencies)
+
+## Description
 Build a browser-based web application to manage a recipe collection. It should be able to show all recipes a user has created, allow a user to edit or delete old recipes, and create new recipes. It should be able to store the recipes between sessions in the application.
 
 ----
@@ -40,3 +48,34 @@ Users must be able to view a list of all of their recipes in **reverse chronolog
 
 * Any CSS Framework Goes
 * No User Login System Required
+
+## Run the Application
+
+In order to use the application, you'll have to run it locally.
+
+1. Download the .zip file or clone the project:
+
+    ```
+    $ git clone https://github.com/brendanpettis/Coding-Challenge.git
+    ```
+
+2. Using the command line, enter the root folder /coding-challenge and install project dependencies by running the command
+    
+    ```
+    $ npm install 
+    ``` 
+
+3. After the dependencies have been installed, you should have noticed the node_modules folder appear. Now run the following command:
+    
+    ```
+    $ npm start
+    ``` 
+    
+4. Finally, visit the application @: `http://localhost:3000`.
+
+## Dependencies
+
+* [Node](https://nodejs.org/en/)
+* [React](https://reactjs.org/)
+* [Material-UI](https://material-ui.com/)
+* [ReactBootstrap](https://react-bootstrap.github.io/)

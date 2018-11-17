@@ -23,7 +23,6 @@ const findRecipe = (context, params) => {
     return context.find((recipe) => recipe.id === params);   
 }
 
-
 class EditRecipeForm extends Component {
 constructor(props){
     super(props);
@@ -71,6 +70,9 @@ finalValidation() {
       
       // Alert that it worked
       this.message();
+
+      // Tell the app its safe to redirect
+      this.setState({ appRedirect: true });
 
       // return the recipe object
       return recipe;
@@ -136,7 +138,7 @@ handleChange = e => {
         }
     }
 
-    // For debuggin purposes
+    // For debugging purposes
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
 }
 
@@ -145,8 +147,7 @@ render() {
     const { formErrors } = this.state;
 
     return (
-              <div>
-                <div className='wrapper'>
+              <div className='wrapper'>
                 <div className='form-wrapper'>
                   <h3>Edit Recipe</h3>
                   <form noValidate>
@@ -237,7 +238,6 @@ render() {
                   </form>
                 </div>
               </div>
-            </div>
         );
     }   
 }
