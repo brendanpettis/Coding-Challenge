@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import { Consumer } from '../context';
-import '../RecipeList/RecipeList.css';
 
 class RecipeList extends Component {
     render() {
@@ -9,7 +8,7 @@ class RecipeList extends Component {
             <Consumer>         
             { props => {   
                 return (
-                    <div className='overflow'>          
+                    <div>          
                     {
                         [...props.state.recipes].reverse().map((recipe, idx) => 
                             <RecipeCard key={idx} {...recipe} 

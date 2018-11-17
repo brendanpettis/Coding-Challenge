@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Consumer } from '../context';
 import Button from 'react-bootstrap/lib/Button';
+import { Redirect } from 'react-router';
 import '../AddRecipe/AddRecipe.css';
 
 const formValid = ({ formErrors, ...rest }) => {
@@ -36,10 +37,11 @@ constructor(props){
             ingredients: '',
             ingredientQtyAndUnit: '',
             steps: ''
-        }
+        },
+        appRedirect: false
     }
 }
- 
+
 timeStamp() {
     let today = new Date();
     return today;
@@ -67,7 +69,7 @@ finalValidation() {
             ingredientQtyAndUnit: [...this.state.ingredientQtyAndUnit.split(',')],
             steps: [...this.state.steps.split(',')]
         }
-        
+        this.setState({ appRedirect: true });
         // show it worked
         this.message();
         return recipe;
@@ -139,12 +141,13 @@ handleChange = e => {
 render() {     
 
     const { formErrors } = this.state;
-
+    const { from } = this.props.location.state || '/'
+    const { appRedirect } = this.state
+    
     return (
         <Consumer> 
         { props => {
             return (
-                <div>
                 <div className='wrapper'>
                 <div className='form-wrapper'>
                   <h3>Add Recipe</h3>
@@ -228,14 +231,16 @@ render() {
                           // Perform a final validation and return a recipe or do nothing
                           let valid = this.finalValidation();
                           if(valid){
-                              props.saveNewRecipe(valid);
+                              props.saveNewRecipe(valid);                            
                           }
                         }}>Add</Button> 
                     </div>
                   </form>
+                  {appRedirect && (
+                    <Redirect to={from || '/'}/>
+                  )}
                 </div>
               </div>
-            </div>
             );
         }}
         </Consumer>
