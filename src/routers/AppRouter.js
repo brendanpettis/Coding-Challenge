@@ -10,17 +10,17 @@ import './index.css';
 
 const AppRouter = () => (
     <Provider>
-    <BrowserRouter>
-        <div className='rokkin-red'>
-            <Header />
-            <Switch>
-                <Route path='/' component={HomePage} exact={true}/>
-                <Route path='/create' component={AddRecipePage}/>
-                <Route path='/update/:id' component={EditRecipePage}/>
-                <Route component={NotFoundPage}/>
-            </Switch>   
-        </div>
-    </BrowserRouter>
+        <BrowserRouter>
+            <div className='rokkin-red'>
+                <Header />
+                <Switch>
+                    <Route path='/' component={HomePage} exact={true}/>
+                    <Route path='/create' component={AddRecipePage}/>
+                    <Route path='/update/:id' component={EditRecipePage}/>
+                    <Route component={NotFoundPage}/>
+                </Switch>   
+            </div>
+        </BrowserRouter>
     </Provider>
 );
 
