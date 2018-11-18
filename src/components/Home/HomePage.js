@@ -1,10 +1,10 @@
 import React from 'react';
-import App from '../App/App';
+import RecipeList from '../RecipeList/RecipeList'
 import '../Home/HomePage.css';
 
 const HomePage = () => (
     <div className='box-layout'>
-        <App />
+        <RecipeList />  
     </div>
 );
 
