@@ -44,8 +44,16 @@ constructor(props){
     }
 }
 
+
 message() {
     alert('Edit was Successful!');
+}
+
+// Pre Populating the Form
+componentDidMount() {
+ 
+  let tempRecipe = findRecipe(this.props.context.state.recipes, this.props.params);
+  this.setState({id:'', title: tempRecipe.title, description: tempRecipe.description, ingredients: tempRecipe.ingredients, ingredientQtyAndUnit: tempRecipe.ingredientQtyAndUnit, steps: tempRecipe.steps});
 }
 
 finalValidation() {
@@ -56,7 +64,7 @@ finalValidation() {
     let tempRecipe = findRecipe(this.props.context.state.recipes, this.props.params);
 
       // reset the state
-      this.setState({id:'', title: null, ingredients: null, ingredientQtyAndUnit: null, steps: null});
+      this.setState({id:'', title: null, description: null, ingredients: null, ingredientQtyAndUnit: null, steps: null});
       
       // Fill out a recipe object
       let recipe = {
@@ -159,6 +167,7 @@ render() {
                         type="text"
                         name="title"
                         noValidate
+                        value={this.state.title}
                         onChange={this.handleChange}
                       />
                       {formErrors.title.length > 0 && (
@@ -174,6 +183,7 @@ render() {
                         type='text'
                         name='description'
                         noValidate
+                        value={this.state.description}
                         onChange={this.handleChange}
                       />
                       {formErrors.description.length > 0 && (
@@ -189,6 +199,7 @@ render() {
                         type='text'
                         name='ingredients'
                         noValidate
+                        value={this.state.ingredients}
                         onChange={this.handleChange}
                       />
                       {formErrors.ingredients.length > 0 && (
@@ -204,6 +215,7 @@ render() {
                       type='text'
                       name='ingredientQtyAndUnit'
                       noValidate
+                      value={this.state.ingredientQtyAndUnit}
                       onChange={this.handleChange}
                     />
                     {formErrors.ingredientQtyAndUnit.length > 0 && (
@@ -219,6 +231,7 @@ render() {
                         type='text'
                         name='steps'
                         noValidate
+                        value={this.state.steps}
                         onChange={this.handleChange}
                       />
                       {formErrors.steps.length > 0 && (
