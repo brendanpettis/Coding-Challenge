@@ -2,23 +2,8 @@ import React, {Component} from 'react';
 import { Consumer } from '../Context/Context';
 import Button from 'react-bootstrap/lib/Button';
 import { Redirect } from 'react-router';
+import { FormValid } from '../HelperFunctions/FormValid';
 import '../AddRecipe/AddRecipe.css';
-
-const formValid = ({ formErrors, ...rest }) => {
-    let valid = true;
-  
-    // validate form errors being empty
-    Object.values(formErrors).forEach(val => {
-      val.length > 0 && (valid = false);
-    });
-  
-    // validate the form was filled out
-    Object.values(rest).forEach(val => {
-      val === null && (valid = false);
-    });
-  
-    return valid;
-  };
 
 class AddRecipePage extends Component {
 constructor(props){
@@ -52,22 +37,19 @@ message() {
 }
 
 finalValidation() {
-
     // If everything from the form was valid, it's safe to complete the recipe and pass it
-    if (formValid(this.state)) {
+    if (FormValid(this.state)) {
         
         // get a timestamp
         let id = this.timeStamp().toString();
 
-        // reset the state
-        this.setState({id:'', title: null, ingredients: null, ingredientQtyAndUnit: null, steps: null});
         let recipe = {
             id: id,
             title: this.state.title,
             description: this.state.description,
-            ingredients: [...this.state.ingredients.split(',')],
-            ingredientQtyAndUnit: [...this.state.ingredientQtyAndUnit.split(',')],
-            steps: [...this.state.steps.split(',')]
+            ingredients: this.state.ingredients.split(','),
+            ingredientQtyAndUnit: this.state.ingredientQtyAndUnit.split(','),
+            steps: this.state.steps.split(',')
         }
         this.setState({ appRedirect: true });
         // show it worked
@@ -135,7 +117,7 @@ handleChange = e => {
         }
     }
 
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    this.setState({ formErrors, [name]: value });
 }
 
 render() {     

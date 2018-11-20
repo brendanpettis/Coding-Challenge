@@ -1,27 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Button from 'react-bootstrap/lib/Button';
+import { FormValid } from '../HelperFunctions/FormValid';
+import { FindRecipe } from '../HelperFunctions/FindRecipe';
 import '../AddRecipe/AddRecipe.css';
-
-const formValid = ({ formErrors, ...rest }) => {
-    let valid = true;
-  
-    // validate form errors being empty
-    Object.values(formErrors).forEach(val => {
-      val.length > 0 && (valid = false);
-    });
-
-    // validate the form was filled out
-    Object.values(rest).forEach(val => {
-      val === null && (valid = false);
-    });
-  
-    return valid;
-  };
-
-// Helper function to pull out the right recipe to edit.
-const findRecipe = (context, params) => {
-    return context.find((recipe) => recipe.id === params);   
-}
 
 class EditRecipeForm extends Component {
 constructor(props){
@@ -52,18 +33,15 @@ message() {
 // Pre Populating the Form
 componentDidMount() {
  
-  let tempRecipe = findRecipe(this.props.context.state.recipes, this.props.params);
+  let tempRecipe = FindRecipe(this.props.context.state.recipes, this.props.params);
   this.setState({id: tempRecipe.id, title: tempRecipe.title, description: tempRecipe.description, ingredients: tempRecipe.ingredients, ingredientQtyAndUnit: tempRecipe.ingredientQtyAndUnit, steps: tempRecipe.steps});
 }
 
 finalValidation() {
 
   // If everything from the form was valid, it's safe to complete the recipe and pass it on
-  if (formValid(this.state)) {
+  if (FormValid(this.state)) {
 
-      // reset the state
-      this.setState({id:'', title: null, description: null, ingredients: null, ingredientQtyAndUnit: null, steps: null});
-      
       // Fill out a recipe object
       let recipe = {
           id: this.state.id,
@@ -141,8 +119,7 @@ handleChange = e => {
         }
     }
 
-    // For debugging purposes
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    this.setState({ formErrors, [name]: value });
 }
 
 render() {     
