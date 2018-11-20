@@ -9,7 +9,7 @@ const formValid = ({ formErrors, ...rest }) => {
     Object.values(formErrors).forEach(val => {
       val.length > 0 && (valid = false);
     });
-  
+
     // validate the form was filled out
     Object.values(rest).forEach(val => {
       val === null && (valid = false);
@@ -53,34 +53,29 @@ message() {
 componentDidMount() {
  
   let tempRecipe = findRecipe(this.props.context.state.recipes, this.props.params);
-  this.setState({id:'', title: tempRecipe.title, description: tempRecipe.description, ingredients: tempRecipe.ingredients, ingredientQtyAndUnit: tempRecipe.ingredientQtyAndUnit, steps: tempRecipe.steps});
+  this.setState({id: tempRecipe.id, title: tempRecipe.title, description: tempRecipe.description, ingredients: tempRecipe.ingredients, ingredientQtyAndUnit: tempRecipe.ingredientQtyAndUnit, steps: tempRecipe.steps});
 }
 
 finalValidation() {
 
   // If everything from the form was valid, it's safe to complete the recipe and pass it on
   if (formValid(this.state)) {
-    
-    let tempRecipe = findRecipe(this.props.context.state.recipes, this.props.params);
 
       // reset the state
       this.setState({id:'', title: null, description: null, ingredients: null, ingredientQtyAndUnit: null, steps: null});
       
       // Fill out a recipe object
       let recipe = {
-          id: tempRecipe.id,
+          id: this.state.id,
           title: this.state.title,
           description: this.state.description,
-          ingredients: [...this.state.ingredients.split(',')],
-          ingredientQtyAndUnit: [...this.state.ingredientQtyAndUnit.split(',')],
-          steps: [...this.state.steps.split(',')]
+          ingredients: Array.isArray(this.state.ingredients) ? this.state.ingredients : this.state.ingredients.split(','),
+          ingredientQtyAndUnit: Array.isArray(this.state.ingredientQtyAndUnit) ? this.state.ingredientQtyAndUnit : this.state.ingredientQtyAndUnit.split(','),
+          steps: Array.isArray(this.state.steps) ? this.state.steps : this.state.steps.split(',')
       }
       
       // Alert that it worked
       this.message();
-
-      // Tell the app its safe to redirect
-      this.setState({ appRedirect: true });
 
       // return the recipe object
       return recipe;

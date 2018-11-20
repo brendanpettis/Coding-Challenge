@@ -21,7 +21,6 @@ constructor(props) {
     this.saveNewRecipe = this.saveNewRecipe.bind(this);
     this.editRecipe = this.editRecipe.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
-    this.handleListItemClick = this.handleListItemClick.bind(this);
 }
    
 componentDidMount() {
@@ -64,15 +63,9 @@ deleteRecipe = title => {
   this.setState({recipes});
 }
 
-handleListItemClick = id => {
-  let recipes = this.state.recipes.slice();
-  recipes = recipes.filter((recipe) => recipe.id === id);
-  console.log(`A List Item with the name of ${recipes} was clicked`);
-}
-
 render() {
     return (
-            <Context.Provider value={{state: this.state, saveNewRecipe: this.saveNewRecipe, editRecipe: this.editRecipe, deleteRecipe: this.deleteRecipe, handleListItemClick: this.handleListItemClick}}>
+            <Context.Provider value={{state: this.state, saveNewRecipe: this.saveNewRecipe, editRecipe: this.editRecipe, deleteRecipe: this.deleteRecipe }}>
              { this.props.children }
             </Context.Provider>
         )

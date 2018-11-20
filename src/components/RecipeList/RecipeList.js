@@ -15,8 +15,7 @@ class RecipeList extends Component {
                     {
                         [...props.state.recipes].reverse().map((recipe, idx) => 
                             <RecipeCard key={idx} {...recipe} 
-                                deleteRecipe={props.deleteRecipe} 
-                                handleListItemClick={props.handleListItemClick}
+                                deleteRecipe={props.deleteRecipe}                               
                             />
                         )
                     }               
