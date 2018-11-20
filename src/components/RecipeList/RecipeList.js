@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RecipeCard from '../RecipeCard/RecipeCard';
-import { Consumer } from '../Context/context';
+import { Consumer } from '../Context/Context';
 
 /* Basic Recipe List that provides context to each recipe card for display
 Also reverses the info to meet the requirement */

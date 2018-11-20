@@ -1,5 +1,5 @@
 import React from 'react';
-import { Consumer } from '../Context/context';
+import { Consumer } from '../Context/Context';
 import EditRecipeForm from '../EditRecipe/EditRecipeForm';
 import '../EditRecipe/EditRecipePage.css';
 

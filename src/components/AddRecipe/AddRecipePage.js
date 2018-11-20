@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Consumer } from '../Context/context';
+import { Consumer } from '../Context/Context';
 import Button from 'react-bootstrap/lib/Button';
 import { Redirect } from 'react-router';
 import '../AddRecipe/AddRecipe.css';

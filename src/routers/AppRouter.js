@@ -5,7 +5,7 @@ import HomePage from '../components/Home/HomePage';
 import AddRecipePage from '../components/AddRecipe/AddRecipePage';
 import EditRecipePage from '../components/EditRecipe/EditRecipePage';
 import NotFoundPage from '../components/NotFound/NotFoundPage';
-import { Provider } from '../components/Context/context';
+import { Provider } from '../components/Context/Context';
 import './index.css';
 
 const AppRouter = () => (
